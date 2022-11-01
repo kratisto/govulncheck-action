@@ -32,7 +32,7 @@ func NewScanner(logger zerolog.Logger, workDir string) Scanner {
 func (r *CmdScanner) Scan() (*vulncheck.Result, error) {
 	pkg := os.Getenv(envPackage)
 	r.log.Info().Msgf("Running govulncheck for package %s in dir %s", pkg, r.workDir)
-
+	r.log.Info().Msgf("%s %s %s", command, flag, pkg)
 	cmd := exec.Command(command, flag, pkg)
 	cmd.Dir = r.workDir
 
